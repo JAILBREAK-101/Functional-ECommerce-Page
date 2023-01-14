@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>E-Commerce Product Page</title>
+    <link rel="stylesheet" href="my_solution.css">
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- extra styles -->
+
+</head>
+
+<body>
+    <!-- we have two sections (the carousel and the details section.) -->
+    <!-- Inside the carousel section, we have the carousel itself, and an image indicator, that shows us where we are in our carousel. -->
+    <!-- Inside the details section, we have the description section, and the price tag section, and the add-to-cart button functionality. -->
+
+    <main>
+        <header>
+            <nav class="navigation-menu-logo">
+                <!-- THE NAVIGATION MENU-HAMBURGER -->
+                <!-- <div class="hamburger-menu"></div> -->
+                <!-- the logo -->
+                <div class="logo-section">
+                    <img src="/images/logo.svg" alt="IMAGE LOGO.">
+                </div>
+
+                <!-- THE NAVIGATION MENU -->
+                <!-- <button for="nav-bar-toggle" class="nav-bar toggle"> -->
+                <img src="/images/icon-menu.svg" alt="" class="toggle">
+                <!-- </button> -->
+                <!-- <input class="toggle_on" id="nav-bar-toggle" type="checkbox"> -->
+                <div class="nav-container" id="navigation-container">
+                    <ul class="nav-list">
+                        <li class="nav-items"><a href="" class="nav-links">Collections</a></li>
+                        <li class="nav-items"><a href="" class="nav-links">Men</a></li>
+                        <li class="nav-items"><a href="" class="nav-links">Woman</a></li>
+                        <li class="nav-items"><a href="" class="nav-links">About</a></li>
+                        <li class="nav-items"><a href="" class="nav-links">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!--  the other functionality (cart and account.)-->
+            <div class="accounts">
+                <!-- <button class="cart-btn open_modal_button"> -->
+                <img class="cart-btn open_modal_button" src="/images/icon-cart.svg" alt="The cart image">
+                <!-- </button> -->
+                <img src="/images/image-avatar.png" alt="The User account's image.">
+            </div>
+        </header>
+        <hr>
+        <!-- RULE FOR THE HEADER. -->
+
+        <!-- THE MODAL FOR THE CART. -->
+        <section class="cart-basket">
+            <section class="basket-title">
+                <p>cart</p>
+                <button class="cart-btn close_modal_button">
+                    <img src="/images/icon-close.svg" alt="close button">
+                </button>
+            </section>
+            <section class="basket-field show-report">
+                <section class="checkout-report">
+                    <!-- any amount user increments to. -->
+                    <!-- inside the cart (product details, plus the number of products.) -->
+                    <img src="/images/image-product-1-thumbnail.jpg" alt="Prduct Picture." class="product-pic">
+                    <section class="checkout-text">
+                        <section class="product-name">
+                            Fall Limited Edition Sneakers
+                        </section>
+                        <section class="product-amount">
+                            <span class="calculation"></span>
+                        </section>
+                    </section>
+                    <img class="delete-button" src="/images/icon-delete.svg" alt="delete button">
+                </section>
+                <button class="checkout-btn">
+                    Checkout
+                </button>
+            </section>
+        </section>
+
+
+
+
+        <dialog id="dialog carousel">
+            <!-- <main class="carousel"> -->
+
+            <button class="left--button dialog"><img src="/images/icon-previous.svg" class="left_picture_button"
+                    alt="Left btn icon"></button>
+            <section class="carousel-img-track dialog-image-track">
+                <!-- buttons come here inside carousel-track -->
+                <ul class="carousel-pic-container">
+
+                    <li class="carousel-picture active-slide" id="slide-on">
+                        <img class="slide-picture" src="/images/image-product-1.jpg" alt="first picture">
+                    </li>
+                    <li class="carousel-picture">
+                        <img class="slide-picture" src="/images/image-product-2.jpg" alt="second picture">
+                    </li>
+                    <li class="carousel-picture">
+                        <img class="slide-picture" src="/images/image-product-3.jpg" alt="third picture">
+                    </li>
+                    <li class="carousel-picture">
+                        <img class="slide-picture" src="/images/image-product-4.jpg" alt="fourth picture">
+                    </li>
+                </ul>
+
+                <!-- second button here. -->
+            </section>
+            <button class="right--button dialog"><img src="/images/icon-next.svg" class="right_picture_button"
+                    alt="Right btn icon"></button>
+
+            <!-- image indicator, for where we are in carousel comes here. -->
+            <section class="carousel-indicators">
+                <!-- images come here. -->
+                <ul class="images-container">
+                    <li class="indicator-pic"><img class="indicator-picture" src="/images/image-product-1-thumbnail.jpg"
+                            alt="first thumbnail"></li>
+                    <li class="indicator-pic"><img class="indicator-picture" src="/images/image-product-2-thumbnail.jpg"
+                            alt=""></li>
+                    <li class="indicator-pic"><img class="indicator-picture" src="/images/image-product-3-thumbnail.jpg"
+                            alt=""></li>
+                    <li class="indicator-pic"><img class="indicator-picture" src="/images/image-product-4-thumbnail.jpg"
+                            alt=""></li>
+                </ul>
+            </section>
+
+            <button class="left--button"><img src="/images/icon-previous.svg" alt="previous button">
+            </button>
+            <!-- </main> -->
+        </dialog>
+        <section class="main-section-forall">
+            <!-- modal for carousel onclick. -->
+
+            <!-- CONTAINS ALL BODY CONTENTS. -->
+            <section class="carousel lightbox">
+                <section class="carousel-img-track" id="caru-container">
+                    <button class="left--button"><img src="/images/icon-previous.svg" class="left_picture_button"
+                            alt="Left btn icon"></button>
+                    <!-- buttons come here inside carousel-track -->
+                    <ul class="carousel-pic-container">
+                        <li class="carousel-picture">
+                            <img class="slide-picture" src="/images/image-product-4.jpg" alt="fourth picture">
+                        </li>
+                    </ul>
+
+                    <li class="carousel-picture">
+                        <img class="slide-picture" src="/images/image-product-3.jpg" alt="third picture">
+                    </li>
+
+                    <li class="carousel-picture">
+                        <img class="slide-picture" src="/images/image-product-2.jpg" alt="second picture">
+                    </li>
+
+                    <li class="carousel-picture">
+                        <img class="slide-picture" src="/images/image-product-1.jpg" alt="first picture">
+                    </li>
+
+                    <!-- second button here. -->
+                </section>
+                <button class="right--button"><img src="/images/icon-next.svg" class="right_picture_button"
+                        alt="Right btn icon"></button>
+
+                <!-- image indicator, for where we are in carousel comes here. -->
+                <section class="carousel-indicators">
+                    <!-- images come here. -->
+                    <ul class="images-container">
+                        <li class="indicator-pic"><img class="indicator-picture"
+                                src="/images/image-product-1-thumbnail.jpg" alt="first thumbnail"></li>
+                        <li class="indicator-pic"><img class="indicator-picture"
+                                src="/images/image-product-2-thumbnail.jpg" alt=""></li>
+                        <li class="indicator-pic"><img class="indicator-picture"
+                                src="/images/image-product-3-thumbnail.jpg" alt=""></li>
+                        <li class="indicator-pic"><img class="indicator-picture"
+                                src="/images/image-product-4-thumbnail.jpg" alt=""></li>
+                    </ul>
+                </section>
+            </section>
+
+
+
+            <!-- the second section in body -->
+            <section class="details">
+                <div class="details-company-name">
+                    GBEMIGA SNEAKER COMPANY
+                </div>
+                <div class="details-sneaker-header">
+                    fall limited edition sneakers
+                </div>
+                <div class="details-sneaker-text">
+                    These low-profile sneakers are your perfect casual wear companion. Featuring a
+                    durable rubber outer sole, they'll withstand everything the weather can offer.
+                </div>
+                <div class="price-tag-section">
+                    <div class="real-price">
+                        $125.00 <span class="discount">50%</span>
+                    </div>
+                    <div class="cancelled-price">
+                        $250.00
+                    </div>
+                </div>
+                <div class="add-toCart-section">
+                    <!-- range button, for increment and decrement, comes here. -->
+                    <!-- BUTTON INCREMENTOR AND DECREMENTOR. -->
+                    <div class="btn-incre-decrementor">
+                        <button onclick="decrease()" class="decrease"><img src="/images/icon-minus.svg"
+                                alt="Minus Button."></button>
+                        <span id="inc-dec-rate." class="count-up">0</span>
+                        <button onclick="increase()" class="increase"><img src="/images/icon-plus.svg"
+                                alt="Plus Button."></button>
+                    </div>
+
+                    <button class="add-toCart-btn"> <img src="/images/button-svg.svg" alt="add-to-cart-btn"
+                            class="cart-image"> Add to
+                        cart</button>
+                    <h1 id="demo"></h1>
+                </div>
+            </section>
+        </section>
+
+    </main>
+
+    <!-- JS -->
+    <script src="carousel.js"></script>
+    <script src="carousel-light-box.js"></script>
+    <script src="solution.js" defer></script>
+    <!-- for the carousel (image slider). -->
+    <!-- <script src="carousel-light-box.js"></script> -->
+    <!-- there's no need to add the defer attribute to the script tag in the body since it is parsing after the html document has loaded. -->
+</body>
+
+</html>

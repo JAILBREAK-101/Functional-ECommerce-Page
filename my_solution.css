@@ -1,0 +1,699 @@
+:root {
+    /* FUNCTIONALITIES (obvious ones) */
+    --primary-color-main: hsl(26, 100%, 55%);
+    --secondary-color-bg: hsl(25, 100%, 94%);
+
+    /* typography and links */
+    --title-header: hsl(220, 13%, 13%);
+    --link-text-clr: hsl(219, 9%, 45%);
+    --text-clr: hsl(220, 14%, 75%);
+    --greyed-out: hsl(223, 64%, 98%);
+
+    /* defered colors */
+    /* styles for carousel and lightbox, comes here. */
+
+    /* tetiary colors */
+    --white: hsl(0, 0%, 100%);
+    --black: hsl(0, 0%, 0%);
+
+    /* typography styles */
+    --max-width-text: 45ch;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html {
+    font-size: 16px;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+body {
+    background: var(--white);
+    /* height: 100vh; */
+    /* width: 100vw; */
+}
+
+/* MAIN STYLES START FROM HERE. */
+/* FOR DESKTOP VIEW. */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+    /* width: 100%; */
+    /* max-width: 100%; */
+}
+
+/* the header section */
+header {
+    display: grid;
+    /* justify-content: space-between; */
+    grid-template-columns: repeat(2, 1fr);
+    /* gap: 3rem; */
+    border-bottom: 1px solid var(--text-clr);
+    padding: 30px 20px;
+    /* padding-bottom: 20px; */
+    margin-bottom: 70px;
+}
+
+/* THE NAV-BAR BUTTON. */
+.nav-bar {
+    background: none;
+    border: none;
+}
+
+.nav-bar img {
+    cursor: pointer;
+}
+
+/* THE NAVIGATION SECTION. */
+.navigation-menu-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    /* use grid for complex designs. */
+}
+
+/* change the display of the picture, so it won't take blcok space. */
+.logo-section img {
+    display: inline;
+}
+
+.toggle {
+    display: none;
+}
+
+/* turning of the display of the nav-list and the close button in the desktop mode. */
+.close-button {
+    display: none;
+}
+
+/* the container for the nav-list */
+.nav-container {
+    display: block;
+    /* visibility: hidden; */
+}
+
+
+.nav-list {
+    display: flex;
+    /* justify-content: space-between; */
+    gap: 1.1rem;
+    list-style: none;
+    flex-direction: row;
+}
+
+.nav-items>.nav-links {
+    text-decoration: none;
+    color: var(--link-clr);
+    line-height: 2.0;
+}
+
+.nav-links:hover {
+    text-decoration: 5px underline var(--primary-color-main);
+
+}
+
+/* THE ACCOUNTS SECTION. */
+.accounts {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* button for cart functionality. (both open and close)*/
+/* the close button */
+.cart-btn {
+    background: none;
+    border: 0;
+    cursor: pointer;
+}
+
+/* the open button (cart icon) */
+.open_modal_button {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.accounts img:last-child {
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+}
+
+.accounts img:last-child:hover {
+    border: 2px solid var(--primary-color-main);
+    border-radius: 20px;
+}
+
+/* THE SECTION FOR ALL THE MAIN CONTENTS IN THE BODY. */
+section.main-section-forall {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5rem;
+    min-height: 100%;
+    flex-direction: row;
+    justify-self: baseline;
+    margin: 0 auto;
+}
+
+/* THE CART MODAL. */
+.cart-basket {
+    position: fixed;
+    left: 80%;
+    top: 31%;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgb(240, 238, 238);
+    background: white;
+    border-radius: 20px;
+    padding: 10px;
+    /* transition: 1s ease-in-out; */
+    /* transform-origin: top; */
+    box-shadow: 2px 5px 7px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    /* visibility: hidden; */
+    /* opacity: 0; */
+    overflow-y: hidden;
+    min-height: 30%;
+    min-width: 350px;
+    display: none;
+    /* backdrop-filter: blur(5px); */
+}
+
+/* .cart-basket::backdrop {
+    background-color: red;
+    filter: blur(5px);
+} */
+
+.basket-title {
+    text-transform: uppercase;
+    padding-bottom: 20px;
+    margin: 20px 0;
+    border-bottom: 1px solid var(--text-clr);
+    display: flex;
+    justify-content: space-between;
+}
+
+.basket-title p {
+    margin: 10px 10px;
+    font-weight: 600;
+}
+
+/* CART BASKET, FOR WHEN WE ADD TO CART. */
+.basket-field {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.checkout-report {
+    display: flex;
+    justify-content: center;
+    gap: .6rem;
+    /* align-items: flex-start; */
+}
+
+.checkout-report img {
+    height: 50px;
+    border-radius: 3px;
+}
+
+span.calculation {
+    color: var(--link-text-clr);
+    font-weight: 600;
+    color: black;
+}
+
+/* THE PRICE, AFTER CALCULATION. */
+.total_price {
+    font-weight: 600;
+}
+
+/* the delete. */
+.delete-button {
+    object-fit: scale-down;
+    cursor: pointer;
+}
+
+/* button for checking out. */
+.checkout-btn {
+    border: 0;
+    background: var(--primary-color-main);
+    color: white;
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 15px 130px;
+    /* align-self: center; */
+    cursor: pointer;
+}
+
+
+/* COMING TO OUR IMAGE CAROUSEL, for now, we style the picture. */
+/* no style for main container, until we fix carousel. */
+
+/* everything for the carousel (the main container). */
+/* carousel alone (not dialog) */
+.carousel {
+    display: flex;
+}
+
+.carousel,
+dialog {
+    width: 350px;
+    height: 500px;
+    /* position: relative; */
+    bottom: 150px;
+    flex-direction: column;
+    gap: 2rem;
+    overflow: hidden;
+    /* align-self: flex-; */
+}
+
+/* .lightbox {
+    width: 200px;
+} */
+
+/* the track container of the carousel. */
+.carousel-img-track {
+    border-radius: 20px;
+    background: red;
+    /* padding: 50px; */
+    position: relative;
+    /* min-height: 100%; */
+    /* max-width: 100%; */
+    /* height: 100%; */
+    width: 100%;
+    /* overflow: hidden; */
+}
+
+/* the ul */
+.carousel-pic-container {
+    /* overflow: hidden; */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    /* border-radius: 20px; */
+    /* position: relative; */
+    width: 100%;
+}
+
+/* .active-slide {
+    display: block;
+} */
+
+/* the Lis */
+.carousel-picture {
+    top: 50%;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* max-height: 600px; */
+    height: 100%;
+    list-style: none;
+    margin: auto;
+    /* max-height: 800px; */
+}
+
+.carousel-picture img {
+    border-radius: 20px;
+    width: 100%;
+    max-height: 400px;
+    object-fit: scale-down;
+    overflow: hidden;
+}
+
+/* THE CAROUSEL BUTTONS. */
+/* THIS IS FOR MEDIA QUERY STYLING */
+.left--button,
+.right--button {
+    display: none;
+    /* # */
+    position: absolute;
+    top: 160px;
+    bottom: 50%;
+    background: none;
+    border: 0;
+}
+
+.right--button {
+    left: 330px;
+}
+
+.left--button {
+    right: 330px;
+    z-index: 1;
+}
+
+.right_picture_button,
+.left_picture_button {
+    background: white;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+/* THE IMAGE INDICATOR STYLING. */
+.carousel-indicators {
+    position: relative;
+    display: flex;
+    width: 350px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+    top: 350px;
+}
+
+/* the UL of the carousel indicator */
+.images-container {
+    /* display: flex; */
+    /* align-items: flex-end; */
+    list-style: none;
+    margin: 0;
+    flex-direction: row;
+    display: flex;
+    gap: 1.2rem;
+    height: 20px;
+    width: 20px;
+    /* justify-content: center; */
+    /* align-items: center; */
+    padding: 0;
+    cursor: pointer;
+}
+
+/* the Li of the track indicator. */
+.indicator-pic {
+    /* position: absolute; */
+    /* left: 0; */
+    /* right: 0; */
+}
+
+/* the image inside the indicator pic(container) */
+.indicator-picture {
+    height: 70px;
+    width: 70px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.indicator-picture:hover {
+    opacity: .2;
+    /* border: 2px solid var(--primary-color-main); */
+    border-radius: 10px;
+}
+
+/* THE MODAL FOR CAROUSEL EVENT. */
+dialog {
+    position: absolute;
+    right: 100%;
+    left: 30%;
+    top: 40%;
+    border: 0;
+    background: none;
+    backdrop-filter: black;
+}
+
+dialog .carousel {
+    z-index: 1;
+}
+
+dialog::backdrop {
+    /* backdrop-filter: black; */
+    background: black;
+    pointer-events: none;
+}
+
+/* the buttons should be visible. */
+dialog .dialog {
+    /* display: block; */
+}
+
+
+
+/* GOING TO THE DETAILS SECTION */
+.details {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* border: 1px solid black; */
+    gap: 1.5rem;
+    /* text-align: left; */
+}
+
+/* going to each sub-details, in the details section. */
+/* colors would later... */
+.details-company-name {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--primary-color-main);
+}
+
+.details-sneaker-header {
+    text-transform: capitalize;
+    font-size: 2.2rem;
+    font-weight: 700;
+    max-width: 20ch;
+    color: var(--title-header);
+}
+
+.details-sneaker-text {
+    max-width: var(--max-width-text);
+    /* padding: 0 50px; */
+    /* text-align: center; */
+    line-height: 1.6;
+    color: var(--link-text-clr);
+}
+
+/* the buttons and price section */
+.price-tag-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    font-size: 1.5rem;
+}
+
+/* The inner price tag and discount. */
+.real-price {
+    font-weight: 600;
+    color: var(--title-header);
+    /* display: flex; */
+}
+
+.real-price span {
+    font-size: 0.8em;
+    padding-left: 30px;
+    color: var(--primary-color-main);
+    background-color: var(--secondary-color-bg);
+    border-radius: 5px;
+    padding: 2px 2px;
+    font-weight: inherit;
+}
+
+/* the cancelled price (former price) */
+.cancelled-price {
+    font-size: 0.7em;
+    font-weight: 600;
+    color: var(--text-clr);
+    text-decoration: 1px solid line-through;
+}
+
+/* ADD TO CART SECTION. */
+.add-toCart-section {
+    display: flex;
+    --border-radius: 10px;
+    gap: 1em;
+    font-weight: 600;
+}
+
+/* the add to cart button. */
+/* style the svg. */
+.add-toCart-btn {
+    --padding-button: 10px 60px;
+    border: 0;
+    background: var(--primary-color-main);
+    color: var(--white);
+    padding: 10px 60px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    box-shadow: 0 10px 10px var(--primary-color-main), .75;
+}
+
+.add-toCart-btn:hover {
+    opacity: .5;
+}
+
+.add-toCart-btn img {
+    width: 15px;
+    height: 15px;
+}
+
+/* THE INCREMENTING AND DECREMENTING BUTTON. */
+.btn-incre-decrementor {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    align-items: center;
+    background: var(--greyed-out);
+    border-radius: var(--border-radius);
+    padding: var(--padding-button);
+    padding: 10px 10px;
+}
+
+/* each of the buttons (plus and minus) */
+.btn-incre-decrementor>.increase,
+.decrease {
+    background: none;
+    border: 0;
+    cursor: pointer;
+    /* align-self: flex-start; */
+}
+
+.decrease:hover {
+    opacity: .5;
+}
+
+.increase:hover {
+    opacity: .5;
+}
+
+.btn-incre-decrementor>.decrease {
+    position: relative;
+    bottom: 2px;
+}
+
+/* MODALS WOULD COME INTO PLAY, FOR FUNCTIONALITY. */
+
+/* RESPONSIVE CSS */
+@media(min-width: 375px) and (max-width: 768px) {
+
+
+    /* COMING INTO THE NAVIGATION BAR. */
+    /* THE HEADER SECTION */
+    header {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding: 10px 10px;
+        justify-content: space-around;
+        gap: 5rem;
+        z-index: 1;
+    }
+
+    /* REARRANGING THE HEADER ELEMENTS, USING GRID. */
+    .navigation-menu-logo {
+        position: relative;
+        height: 100%;
+    }
+
+    /* The Toggle Menu */
+    .toggle {
+        display: block;
+        cursor: pointer;
+    }
+
+    /* .nav-list {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 50%;
+    background: var(--white);
+} */
+    .nav-list {
+        /* display: none; */
+        flex-direction: column;
+        /* to make it occupy the full background. */
+        /* margin: 10px; */
+        padding: 70px 40px;
+        position: relative;
+        top: 10px;
+        /* position: relative; */
+        /* z-index: 1; */
+    }
+
+    .nav-links {
+        font-weight: 600;
+        /* margin-bottom: 20px; */
+    }
+
+    .nav-container {
+        background: white;
+        position: fixed;
+        top: 0%;
+        bottom: 100%;
+        right: 50%;
+        height: 100vh;
+        width: 50vw;
+        box-shadow: 0 0 3px rgba(0, 0, 2, .3);
+        /* z-index: 1; */
+        /* visibility: visible; */
+        display: none;
+    }
+
+    /* my created close-button element. */
+    .close-button {
+        display: block;
+        position: relative;
+        left: 15%;
+        top: -43%;
+        bottom: 100;
+        cursor: pointer;
+        /* margin-bottom: 70px; */
+    }
+
+    .nav-container::backdrop {
+        opacity: .2;
+        color: red;
+    }
+
+    /* FOR THE NAV BAR TO OPEN. */
+    /* .nav-bar-toggle~.nav-list {
+        display: block;
+        flex-direction: column;
+    } */
+
+    /* THE CAROUSEL SECTION. */
+    .carousel-lightbox {
+        /* overflow: hidden; */
+    }
+
+    .carousel-lightbox .image-container {
+        border-radius: none;
+        /* width: 100vw; */
+    }
+
+    .image-container img {}
+
+    /* THE SECTION FOR ALL THE MAIN CONTENTS IN THE BODY. */
+    section.main-section-forall {
+        flex-direction: column;
+    }
+
+    /* MAIN SECTION, price-tag section. */
+    .price-tag-section {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    /* THE ADD-TO-CART SECTION */
+    .add-toCart-section {
+        flex-direction: column;
+    }
+
+    .btn-incre-decrementor {
+        justify-content: space-between;
+    }
+
+}
