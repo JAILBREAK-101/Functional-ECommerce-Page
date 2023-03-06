@@ -3,7 +3,7 @@
 
 <head>
     <title>E-Commerce Product Page</title>
-    <link rel="stylesheet" href="my_solution.css">
+    <link rel="stylesheet" href="./style.css">
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <!-- extra styles -->
@@ -27,9 +27,10 @@
 
                 <!-- THE NAVIGATION MENU -->
                 <!-- <button for="nav-bar-toggle" class="nav-bar toggle"> -->
-                <img src="./images/icon-menu.svg" alt="" class="toggle">
+                <!-- <img src="./images/icon-menu.svg" alt="" class="toggle"> -->
                 <!-- </button> -->
                 <!-- <input class="toggle_on" id="nav-bar-toggle" type="checkbox"> -->
+                <label for="" class="hamburger-menu"></label>
                 <div class="nav-container" id="navigation-container">
                     <ul class="nav-list">
                         <li class="nav-items"><a href="" class="nav-links">Collections</a></li>
@@ -82,67 +83,18 @@
         </section>
 
 
-
-
-        <dialog id="dialog carousel">
-            <!-- <main class="carousel"> -->
-
-            <button class="left--button dialog"><img src="./images/icon-previous.svg" class="left_picture_button"
-                    alt="Left btn icon"></button>
-            <section class="carousel-img-track dialog-image-track">
-                <!-- buttons come here inside carousel-track -->
-                <ul class="carousel-pic-container">
-
-                    <li class="carousel-picture active-slide" id="slide-on">
-                        <img class="slide-picture" src="./images/image-product-1.jpg" alt="first picture">
-                    </li>
-                    <li class="carousel-picture">
-                        <img class="slide-picture" src="./images/image-product-2.jpg" alt="second picture">
-                    </li>
-                    <li class="carousel-picture">
-                        <img class="slide-picture" src="./images/image-product-3.jpg" alt="third picture">
-                    </li>
-                    <li class="carousel-picture">
-                        <img class="slide-picture" src="./images/image-product-4.jpg" alt="fourth picture">
-                    </li>
-                </ul>
-
-                <!-- second button here. -->
-            </section>
-            <button class="right--button dialog"><img src="./images/icon-next.svg" class="right_picture_button"
-                    alt="Right btn icon"></button>
-
-            <!-- image indicator, for where we are in carousel comes here. -->
-            <section class="carousel-indicators">
-                <!-- images come here. -->
-                <ul class="images-container">
-                    <li class="indicator-pic"><img class="indicator-picture"
-                            src="./images/image-product-1-thumbnail.jpg" alt="first thumbnail"></li>
-                    <li class="indicator-pic"><img class="indicator-picture"
-                            src="./images/image-product-2-thumbnail.jpg" alt=""></li>
-                    <li class="indicator-pic"><img class="indicator-picture"
-                            src="./images/image-product-3-thumbnail.jpg" alt=""></li>
-                    <li class="indicator-pic"><img class="indicator-picture"
-                            src="./images/image-product-4-thumbnail.jpg" alt=""></li>
-                </ul>
-            </section>
-
-            <button class="left--button"><img src="./images/icon-previous.svg" alt="previous button">
-            </button>
-            <!-- </main> -->
-        </dialog>
         <section class="main-section-forall">
             <!-- modal for carousel onclick. -->
 
             <!-- CONTAINS ALL BODY CONTENTS. -->
-            <section class="carousel lightbox">
-                <section class="carousel-img-track" id="caru-container">
-                    <button class="left--button"><img src="/images/icon-previous.svg" class="left_picture_button"
+            <section class="carousel">
+                <section class="carousel-slider" id="caru-container">
+                    <button class="prev-button" data-buttons><img src="/images/icon-previous.svg" class="left_picture_button"
                             alt="Left btn icon"></button>
                     <!-- buttons come here inside carousel-track -->
-                    <ul class="carousel-pic-container">
-                        <li class="carousel-picture">
-                            <img class="slide-picture" src="./images/image-product-4.jpg" alt="fourth picture">
+                    <ul>
+                        <li class="slide">
+                            <img class="carousel-image" src="./images/image-product-4.jpg" alt="fourth picture">
                         </li>
                     </ul>
 
@@ -223,9 +175,8 @@
     </main>
 
     <!-- JS -->
-    <script src="carousel.js"></script>
-    <script src="carousel-light-box.js"></script>
-    <script src="solution.js" defer></script>
+    <script src="./carousel.js"></script>
+    <script src="./cart.js"></script>
     <!-- for the carousel (image slider). -->
     <!-- <script src="carousel-light-box.js"></script> -->
     <!-- there's no need to add the defer attribute to the script tag in the body since it is parsing after the html document has loaded. -->

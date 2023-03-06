@@ -18,6 +18,15 @@
 
     /* typography styles */
     --max-width-text: 45ch;
+
+    /* For Hamburger Menu */
+    --bar-height: 6px;
+    --bar-width: 30px;
+    --animation-timing: 250ms ease-in-out;
+    --hambuger-gap: .2rem;
+
+    /* the animation of the hamburger menu, and the height of the toggles */
+    --hamburger-height: calc(var(--bar-height) * 3 + var(--hambuger-gap) * 2)
 }
 
 *,
@@ -34,8 +43,8 @@ html {
 
 body {
     background: var(--white);
-    /* height: 100vh; */
-    /* width: 100vw; */
+    margin: 0;
+    padding: 0;
 }
 
 /* MAIN STYLES START FROM HERE. */
@@ -45,7 +54,6 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
     position: relative;
     /* width: 100%; */
     /* max-width: 100%; */
@@ -156,14 +164,18 @@ header {
 }
 
 /* THE SECTION FOR ALL THE MAIN CONTENTS IN THE BODY. */
+.content {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
 section.main-section-forall {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     gap: 5rem;
-    min-height: 100%;
+    align-items: center;
     flex-direction: row;
-    justify-self: baseline;
     margin: 0 auto;
 }
 
@@ -266,182 +278,86 @@ span.calculation {
 /* everything for the carousel (the main container). */
 /* carousel alone (not dialog) */
 .carousel {
-    display: flex;
+    position: relative;
 }
 
-.carousel,
-dialog {
-    width: 350px;
-    height: 500px;
-    /* position: relative; */
-    bottom: 150px;
+.carousel-slider {
+    position: relative;
+    display: flex;
     flex-direction: column;
-    gap: 2rem;
-    overflow: hidden;
-    /* align-self: flex-; */
+    align-items: center;
+    justify-content: center;
 }
 
-/* .lightbox {
-    width: 200px;
-} */
-
-/* the track container of the carousel. */
-.carousel-img-track {
-    border-radius: 20px;
-    background: red;
-    /* padding: 50px; */
-    position: relative;
-    /* min-height: 100%; */
-    /* max-width: 100%; */
-    /* height: 100%; */
-    width: 100%;
-    /* overflow: hidden; */
-}
-
-/* the ul */
-.carousel-pic-container {
-    /* overflow: hidden; */
+ul {
     list-style: none;
-    margin: 0;
     padding: 0;
-    height: 100%;
-    /* border-radius: 20px; */
-    /* position: relative; */
-    width: 100%;
+    margin: 0;
 }
 
-/* .active-slide {
+.slide {
+    overflow: hidden;
+    border-radius: 1rem;
+    position: absolute;
+    right: -30px;
+    top: -200px;
+    opacity: 0;
+    transition: 250ms opacity ease-in-out;
+    /* Transition delayed before next image shows */
+    transition-delay: 250ms;
+}
+
+.slide[data-active] {
+    opacity: 1;
+    /* go into the new one immediately, while the new one waits. */
+    transition-delay: 0;
+}
+
+.carousel-img {
     display: block;
-} */
+    object-fit: cover;
+    width: 400px;
+    height: 400px;
+}
 
-/* the Lis */
-.carousel-picture {
-    top: 50%;
+.carousel-indicator {
     position: absolute;
-    bottom: 0;
-    width: 100%;
-    /* max-height: 600px; */
-    height: 100%;
-    list-style: none;
-    margin: auto;
-    /* max-height: 800px; */
-}
-
-.carousel-picture img {
-    border-radius: 20px;
-    width: 100%;
-    max-height: 400px;
-    object-fit: scale-down;
-    overflow: hidden;
-}
-
-/* THE CAROUSEL BUTTONS. */
-/* THIS IS FOR MEDIA QUERY STYLING */
-.left--button,
-.right--button {
-    display: none;
-    /* # */
-    position: absolute;
-    top: 160px;
-    bottom: 50%;
-    background: none;
-    border: 0;
-}
-
-.right--button {
-    left: 330px;
-}
-
-.left--button {
-    right: 330px;
+    display: flex;
+    justify-content: stretch;
+    gap: 1rem;
     z-index: 1;
+    top: 200px;
+    right: 20px;
+    margin-top: 1rem;
 }
 
-.right_picture_button,
-.left_picture_button {
-    background: white;
-    border-radius: 50%;
-    padding: 10px;
-}
-
-/* THE IMAGE INDICATOR STYLING. */
-.carousel-indicators {
-    position: relative;
-    display: flex;
-    width: 350px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    margin: 0;
-    padding: 0;
-    top: 350px;
-}
-
-/* the UL of the carousel indicator */
-.images-container {
-    /* display: flex; */
-    /* align-items: flex-end; */
-    list-style: none;
-    margin: 0;
-    flex-direction: row;
-    display: flex;
-    gap: 1.2rem;
-    height: 20px;
-    width: 20px;
-    /* justify-content: center; */
-    /* align-items: center; */
-    padding: 0;
+.image-container {
+    border-radius: .5rem;
+    overflow: hidden;
     cursor: pointer;
 }
 
-/* the Li of the track indicator. */
-.indicator-pic {
-    /* position: absolute; */
-    /* left: 0; */
-    /* right: 0; */
-}
-
-/* the image inside the indicator pic(container) */
-.indicator-picture {
+.carousel-indicator img {
+    display: block;
     height: 70px;
     width: 70px;
     object-fit: cover;
-    border-radius: 10px;
-    cursor: pointer;
 }
 
-.indicator-picture:hover {
-    opacity: .2;
-    /* border: 2px solid var(--primary-color-main); */
-    border-radius: 10px;
-}
-
-/* THE MODAL FOR CAROUSEL EVENT. */
-dialog {
+button[data-buttons] {
     position: absolute;
-    right: 100%;
-    left: 30%;
-    top: 40%;
-    border: 0;
-    background: none;
-    backdrop-filter: black;
-}
-
-dialog .carousel {
+    top: 50%;
     z-index: 1;
+    transform: translateY(-59%);
 }
 
-dialog::backdrop {
-    /* backdrop-filter: black; */
-    background: black;
-    pointer-events: none;
+button:nth-child(1) {
+    left: -22rem;
 }
 
-/* the buttons should be visible. */
-dialog .dialog {
-    /* display: block; */
+button:nth-child(2) {
+    /* right: 1rem; */
 }
-
-
 
 /* GOING TO THE DETAILS SECTION */
 .details {
@@ -577,19 +493,22 @@ dialog .dialog {
 /* MODALS WOULD COME INTO PLAY, FOR FUNCTIONALITY. */
 
 /* RESPONSIVE CSS */
-@media(min-width: 375px) and (max-width: 768px) {
+@media (max-width: 768px) {
 
+    section.main-section-forall {
+        flex-direction: column;
+    }
 
     /* COMING INTO THE NAVIGATION BAR. */
     /* THE HEADER SECTION */
-    header {
+    /* header {
         border-bottom: none;
         margin-bottom: 0;
         padding: 10px 10px;
         justify-content: space-around;
         gap: 5rem;
         z-index: 1;
-    }
+    } */
 
     /* REARRANGING THE HEADER ELEMENTS, USING GRID. */
     .navigation-menu-logo {
@@ -603,17 +522,9 @@ dialog .dialog {
         cursor: pointer;
     }
 
-    /* .nav-list {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    right: 50%;
-    background: var(--white);
-} */
     .nav-list {
         /* display: none; */
-        flex-direction: column;
+        /* flex-direction: column; */
         /* to make it occupy the full background. */
         /* margin: 10px; */
         padding: 70px 40px;
@@ -636,10 +547,11 @@ dialog .dialog {
         right: 50%;
         height: 100vh;
         width: 50vw;
-        box-shadow: 0 0 3px rgba(0, 0, 2, .3);
+        visibility: hidden;
+        /* box-shadow: 0 0 3px rgba(0, 0, 2, .3); */
         /* z-index: 1; */
         /* visibility: visible; */
-        display: none;
+        /* display: none; */
     }
 
     /* my created close-button element. */
@@ -656,6 +568,88 @@ dialog .dialog {
     .nav-container::backdrop {
         opacity: .2;
         color: red;
+    }
+
+    .hamburger-menu {
+        --hamburger-margin: 8px;
+        --menu-open-width: calc(var(--hamburger-height) * 1.41421356237);
+        display: flex;
+        flex-direction: column;
+        gap: var(--hambuger-gap);
+        cursor: pointer;
+        outline: none;
+        z-index: 2;
+        position: relative;
+        outline: none;
+    }
+
+    /* THE CHECKBOX TOGGLE */
+    .hamburger-menu::before,
+    .hamburger-menu::after {
+        content: " ";
+        position: absolute;
+        cursor: pointer;
+    }
+
+    .hamburger-menu::before {
+        top: 0;
+        /* left: -2rem; */
+    }
+
+    .hamburger-menu::after {
+        top: 0;
+        /* left: 2rem; */
+    }
+
+    .toggle,
+    .hamburger-menu::before,
+    .hamburger-menu::after {
+        appearance: none;
+        background: black;
+        height: var(--bar-height);
+        width: var(--bar-width);
+        position: relative;
+        /* animate smoothly */
+        transition: opacity var(--animation-timing), width var(--animation-timing), rotate var(--animation-timing), translate var(--animation-timing);
+        /* transform-origin: left center; */
+    }
+
+    .hamburger-menu input:checked {
+        pointer-events: none;
+        opacity: 0;
+        --foreground: #000;
+        --background: #fff;
+    }
+
+    /* Focus accessibility styles */
+    .hamburger-menu:has(input:focus-visible)::before,
+    .hamburger-menu:has(input:focus-visible)::after,
+    .hamburger-menu:has(input:focus-visible) {
+        outline: 1px solid;
+    }
+
+    /* hamburger animation */
+    .hamburger-menu:has(.toggle:checked)::before {
+        rotate: 45deg;
+        width: var(--menu-open-width);
+        translate: 0 calc(var(--bar-height) / 1);
+    }
+
+    .hamburger-menu:has(.toggle:checked)::after {
+        rotate: -45deg;
+        width: var(--menu-open-width);
+        translate: 0 calc(var(--bar-height) / -1);
+    }
+
+    .hamburger-menu:has(.toggle:checked, .toggle::before, .toggle::after)+.nav-container {
+        visibility: visible;
+        transition: .2s var(--background);
+        transform-origin: left;
+    }
+
+    .hamburger-menu:has(.toggle:checked, .toggle::before, .toggle::after)+.nav-container .nav-list {
+        visibility: visible;
+        flex-direction: column;
     }
 
     /* FOR THE NAV BAR TO OPEN. */
