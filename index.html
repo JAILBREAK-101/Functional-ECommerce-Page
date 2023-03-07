@@ -45,6 +45,7 @@
             <!--  the other functionality (cart and account.)-->
             <div class="accounts">
                 <!-- <button class="cart-btn open_modal_button"> -->
+                <span class="items-count">0</span>
                 <img class="cart-btn open_modal_button" src="./images/icon-cart.svg" alt="The cart image">
                 <!-- </button> -->
                 <img src="./images/image-avatar.png" alt="The User account's image.">
@@ -54,7 +55,7 @@
         <!-- RULE FOR THE HEADER. -->
 
         <!-- THE MODAL FOR THE CART. -->
-        <section class="cart-basket">
+        <section class="cart-basket" data-cart>
             <section class="basket-title">
                 <p>cart</p>
                 <button class="cart-btn close_modal_button">
@@ -62,14 +63,19 @@
                 </button>
             </section>
             <section class="basket-field show-report">
+                <span class="empty-indicator">
+                    Your cart is empty.
+                </span>
                 <section class="checkout-report">
                     <!-- any amount user increments to. -->
                     <!-- inside the cart (product details, plus the number of products.) -->
-                    <img src="./images/image-product-1-thumbnail.jpg" alt="Prduct Picture." class="product-pic">
+                    <!-- for the empty indicator -->
+
+                    <img src="./images/image-product-1-thumbnail.jpg" alt="shoe" class="product-pic">
                     <section class="checkout-text">
-                        <section class="product-name">
-                            Fall Limited Edition Sneakers
-                        </section>
+                        <p class="product-name">
+                            Autumn Limited Edition Sneakers
+                        </p>
                         <section class="product-amount">
                             <span class="calculation"></span>
                         </section>
@@ -87,38 +93,39 @@
             <!-- modal for carousel onclick. -->
 
             <!-- CONTAINS ALL BODY CONTENTS. -->
-            <section class="carousel">
+            <section class="carousel" data-carousel>
                 <section class="carousel-slider" id="caru-container">
-                    <button class="prev-button" data-buttons><img src="/images/icon-previous.svg" class="left_picture_button"
-                            alt="Left btn icon"></button>
+                    <button class="prev-button" data-buttons><img src="/images/icon-previous.svg"
+                            class="left_picture_button" alt="Left btn icon">
+                    </button>
+                    <button class="next-button" data-buttons><img src="./images/icon-next.svg"
+                            class="right_picture_button" alt="Right btn icon"></button>
                     <!-- buttons come here inside carousel-track -->
                     <ul>
-                        <li class="slide">
-                            <img class="carousel-image" src="./images/image-product-4.jpg" alt="fourth picture">
+                        <li class="slide" data-active>
+                            <img class="carousel-img" src="./images/image-product-1.jpg" alt="first picture">
                         </li>
                     </ul>
 
-                    <li class="carousel-picture">
-                        <img class="slide-picture" src="./images/image-product-3.jpg" alt="third picture">
+                    <li class="slide">
+                        <img class="carousel-img" src="./images/image-product-2.jpg" alt="second picture">
                     </li>
 
-                    <li class="carousel-picture">
-                        <img class="slide-picture" src="./images/image-product-2.jpg" alt="second picture">
+                    <li class="slide">
+                        <img class="carousel-img" src="./images/image-product-3.jpg" alt="third picture">
                     </li>
 
-                    <li class="carousel-picture">
-                        <img class="slide-picture" src="./images/image-product-1.jpg" alt="first picture">
+                    <li class="slide">
+                        <img class="carousel-img" src="./images/image-product-4.jpg" alt="fourth picture">
                     </li>
 
                     <!-- second button here. -->
                 </section>
-                <button class="right--button"><img src="./images/icon-next.svg" class="right_picture_button"
-                        alt="Right btn icon"></button>
 
                 <!-- image indicator, for where we are in carousel comes here. -->
-                <section class="carousel-indicators">
+                <section class="carousel-indicator">
                     <!-- images come here. -->
-                    <ul class="images-container">
+                    <ul class="image-container">
                         <li class="indicator-pic"><img class="indicator-picture"
                                 src="./images/image-product-1-thumbnail.jpg" alt="first thumbnail"></li>
                         <li class="indicator-pic"><img class="indicator-picture"
@@ -158,10 +165,10 @@
                     <!-- BUTTON INCREMENTOR AND DECREMENTOR. -->
                     <div class="btn-incre-decrementor">
                         <button onclick="decrease()" class="decrease"><img src="./images/icon-minus.svg"
-                                alt="Minus Button."></button>
+                                alt="Increase"></button>
                         <span id="inc-dec-rate." class="count-up">0</span>
                         <button onclick="increase()" class="increase"><img src="./images/icon-plus.svg"
-                                alt="Plus Button."></button>
+                                alt="Decrease"></button>
                     </div>
 
                     <button class="add-toCart-btn"> <img src="./images/button-svg.svg" alt="add-to-cart-btn"

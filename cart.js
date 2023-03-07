@@ -1,20 +1,29 @@
 // THE CART OF OUR ECOMMERCE PAGE
 
 // THE CART ADD AND UN-ADD BUTTON (increment and decrement button).
-const increase_button = document.querySelector(".increase");
-const decrease_button = document.querySelector(".decrease");
+const increaseButton = document.querySelector(".increase");
+const decreaseButton = document.querySelector(".decrease");
 let count = 0;
 const display = document.getElementById("inc-dec-rate.");
 
 // FOR THE ADD TO CART BUTTON.
-const add_button = document.querySelector(".add-toCart-btn");
+const addButton = document.querySelector(".add-toCart-btn");
 const openCart = document.querySelector(".cart-basket");
 
 // FOR THE CART
-const cart_modal = document.querySelector(".cart-basket");
+const emptyIndicator = document.querySelector(".empty-indicator");
+const itemsCount = document.querySelector(".items-count");
+const cartModal = document.querySelector(".cart-basket");
 const openModal = document.querySelector(".open_modal_button");
 const closeModal = document.querySelector(".close_modal_button");
+const deleteButton = document.querySelector(".delete-button");
+const checkoutButton = document.querySelector(".checkout-btn");
+const checkoutReport = document.querySelector(".checkout-report");
 
+checkoutReport.classList.add("close");
+emptyIndicator.classList.add("open");
+
+// Adding to the cart (functionality)
 // === increment ===
 function increase() {
   count++;
@@ -25,6 +34,7 @@ function increase() {
 
 // === decrement ===
 function decrease() {
+  if (count < 1) return;
   count--;
   display.innerText = count;
   // if (count < 0) {
@@ -33,33 +43,58 @@ function decrease() {
 }
 
 // click on + counting rate should be increase for as many times as possible.
-increase_button.addEventListener("click", () => {
-  console.log("increase");
+// increase_button.addEventListener("click", () => {
+//   console.log("increase");
+// });
+function cartFunctionality() {
+  // Remove what we see, when we add to our cart.
+  checkoutReport.classList.remove("close");
+  emptyIndicator.classList.add("close");
+
+  if (cartModal.className.includes("close")) {
+    cartModal.classList.remove("close");
+    cartModal.classList.add("open");
+  } else if (cartModal.className !== "close") {
+    cartModal.classList.add("open");
+  }
+
+  closeModal.addEventListener("click", () => {
+    cartModal.classList.remove("open");
+    cartModal.classList.add("close");
+  });
+
+  deleteButton.addEventListener("click", () => {
+    // delete the checkout report (that particular one)
+    checkoutReport.remove();
+    emptyIndicator.classList.remove("close");
+    emptyIndicator.classList.add("open");
+    itemsCount.innerText = 0;
+  });
+}
+
+openModal.addEventListener("click", () => {
+  cartFunctionality();
 });
 
-add_button.addEventListener("click", () => {
-  const checkout_report = document.querySelector(".show-report");
+addButton.addEventListener("click", () => {
+  // for opening the cart when we click on the add-to-cart button.
+  // if (cartModal.contains(checkoutReport)) {
+  // }
+  if (count === 0) return;
+  const showReport = document.querySelector(".show-report");
   // class for the calculation.
   const calculation = document.querySelector(".calculation");
   // let number_of_items = increased;
   let increased = display.innerText;
-  let calculated_price = 125 * increased;
+  let calculatedPrice = 125 * increased;
 
   calculation.innerText =
-    "$125.00 × " + increased + "  " + "$" + calculated_price;
+    "$125.00 × " + increased + "  " + "$" + calculatedPrice;
 
   // get the class for display and style it to show, when we click on the add to cart button.
-  checkout_report.style.display = "flex";
+  showReport.style.display = "flex";
 
-  // for opening the cart when we click on the add-to-cart button.
-  openCart.style.display = "block";
-});
+  itemsCount.innerText = count;
 
-openModal.addEventListener("click", () => {
-  cart_modal.style.display = "block";
-  openModal.style.color = "black";
-});
-
-closeModal.addEventListener("click", () => {
-  cart_modal.style.display = "none";
+  cartFunctionality();
 });

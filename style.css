@@ -1,4 +1,8 @@
 :root {
+    /* Open and Close Variable classes */
+    --open: block;
+    --close: none;
+
     /* FUNCTIONALITIES (obvious ones) */
     --primary-color-main: hsl(26, 100%, 55%);
     --secondary-color-bg: hsl(25, 100%, 94%);
@@ -135,6 +139,7 @@ header {
     justify-content: flex-end;
     align-items: center;
     gap: 2rem;
+    position: relative;
 }
 
 /* button for cart functionality. (both open and close)*/
@@ -143,6 +148,7 @@ header {
     background: none;
     border: 0;
     cursor: pointer;
+    position: relative;
 }
 
 /* the open button (cart icon) */
@@ -161,6 +167,17 @@ header {
 .accounts img:last-child:hover {
     border: 2px solid var(--primary-color-main);
     border-radius: 20px;
+}
+
+/* THE INDICATOR ON THE CART FOR THE NUMBER OF ITEMS ADDED. */
+.items-count {
+    position: absolute;
+    left: 26.5rem;
+    top: 1.5rem;
+    /* display: block; */
+    background-color: var(--primary-color-main);
+    border-radius: 50%;
+    padding: .4rem .6rem;
 }
 
 /* THE SECTION FOR ALL THE MAIN CONTENTS IN THE BODY. */
@@ -199,6 +216,8 @@ section.main-section-forall {
     min-height: 30%;
     min-width: 350px;
     display: none;
+    margin: 0;
+    padding: 1.5rem 0;
     /* backdrop-filter: blur(5px); */
 }
 
@@ -211,6 +230,7 @@ section.main-section-forall {
     text-transform: uppercase;
     padding-bottom: 20px;
     margin: 20px 0;
+    padding: 1rem;
     border-bottom: 1px solid var(--text-clr);
     display: flex;
     justify-content: space-between;
@@ -228,6 +248,11 @@ section.main-section-forall {
     align-items: center;
     justify-content: center;
     gap: 1rem;
+}
+
+.product-name {
+    text-overflow: ellipsis;
+    max-width: 60ch;
 }
 
 .checkout-report {
@@ -271,6 +296,13 @@ span.calculation {
     cursor: pointer;
 }
 
+.open {
+    display: var(--open);
+}
+
+.close {
+    display: var(--close);
+}
 
 /* COMING TO OUR IMAGE CAROUSEL, for now, we style the picture. */
 /* no style for main container, until we fix carousel. */
@@ -305,6 +337,7 @@ ul {
     transition: 250ms opacity ease-in-out;
     /* Transition delayed before next image shows */
     transition-delay: 250ms;
+    cursor: pointer;
 }
 
 .slide[data-active] {
@@ -322,19 +355,32 @@ ul {
 
 .carousel-indicator {
     position: absolute;
-    display: flex;
-    justify-content: stretch;
     gap: 1rem;
     z-index: 1;
     top: 200px;
-    right: 20px;
+    right: -20px;
     margin-top: 1rem;
 }
 
 .image-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-direction: row;
+    gap: 1rem;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+}
+
+/* THE LI OF THE INDICATOR PICTURES. */
+.indicator-pic {
     border-radius: .5rem;
     overflow: hidden;
-    cursor: pointer;
+}
+
+.indicator-pic:not(.indicator-pic:nth-child(2n + 4)) {
+    margin-right: 1.2rem;
 }
 
 .carousel-indicator img {
@@ -348,16 +394,18 @@ button[data-buttons] {
     position: absolute;
     top: 50%;
     z-index: 1;
-    transform: translateY(-59%);
+    transform: translateY(-50%);
 }
 
-button:nth-child(1) {
-    left: -22rem;
+.left_picture_button {
+    left: 1rem;
 }
 
-button:nth-child(2) {
-    /* right: 1rem; */
+.right_picture_button {
+    right: -1rem;
 }
+
+/* === END OF CAROUSEL === */
 
 /* GOING TO THE DETAILS SECTION */
 .details {
@@ -382,6 +430,7 @@ button:nth-child(2) {
     font-size: 2.2rem;
     font-weight: 700;
     max-width: 20ch;
+    /* text-overflow:clip; */
     color: var(--title-header);
 }
 
