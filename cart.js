@@ -11,7 +11,7 @@ const addButton = document.querySelector(".add-toCart-btn");
 const openCart = document.querySelector(".cart-basket");
 
 // FOR THE CART
-const emptyIndicator = document.querySelector(".empty-indicator");
+const emptyIndicator = document.querySelector(".empty-ind");
 const itemsCount = document.querySelector(".items-count");
 const cartModal = document.querySelector(".cart-basket");
 const openModal = document.querySelector(".open_modal_button");
@@ -19,9 +19,7 @@ const closeModal = document.querySelector(".close_modal_button");
 const deleteButton = document.querySelector(".delete-button");
 const checkoutButton = document.querySelector(".checkout-btn");
 const checkoutReport = document.querySelector(".checkout-report");
-
-checkoutReport.classList.add("close");
-emptyIndicator.classList.add("open");
+const showReport = document.querySelector(".show-report");
 
 // Adding to the cart (functionality)
 // === increment ===
@@ -48,26 +46,27 @@ function decrease() {
 // });
 function cartFunctionality() {
   // Remove what we see, when we add to our cart.
-  checkoutReport.classList.remove("close");
+  emptyIndicator.classList.remove("open");
   emptyIndicator.classList.add("close");
+  checkoutReport.classList.remove("close");
+  checkoutReport.classList.add("open");
 
   if (cartModal.className.includes("close")) {
     cartModal.classList.remove("close");
-    cartModal.classList.add("open");
+    cartModal.classList.add("display-flex");
   } else if (cartModal.className !== "close") {
-    cartModal.classList.add("open");
+    cartModal.classList.add("display-flex");
   }
 
   closeModal.addEventListener("click", () => {
-    cartModal.classList.remove("open");
+    cartModal.classList.remove("display-flex");
     cartModal.classList.add("close");
   });
 
   deleteButton.addEventListener("click", () => {
     // delete the checkout report (that particular one)
-    checkoutReport.remove();
-    emptyIndicator.classList.remove("close");
-    emptyIndicator.classList.add("open");
+    checkoutReport.classList.remove("open");
+    checkoutReport.classList.add("close");
     itemsCount.innerText = 0;
   });
 }
@@ -81,16 +80,19 @@ addButton.addEventListener("click", () => {
   // if (cartModal.contains(checkoutReport)) {
   // }
   if (count === 0) return;
-  const showReport = document.querySelector(".show-report");
+
   // class for the calculation.
   const calculation = document.querySelector(".calculation");
+  const price = document.getElementById("price");
   // let number_of_items = increased;
   let increased = display.innerText;
   let calculatedPrice = 125 * increased;
 
-  calculation.innerText =
-    "$125.00 × " + increased + "  " + "$" + calculatedPrice;
+  calculation.innerText = "$125.00 × " + increased + "  ";
+  price.innerText = "$" + calculatedPrice;
 
+  calculation.classList.add("normal");
+  price.classList.add("bold");
   // get the class for display and style it to show, when we click on the add to cart button.
   showReport.style.display = "flex";
 

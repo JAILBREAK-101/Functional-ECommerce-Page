@@ -2,6 +2,7 @@
     /* Open and Close Variable classes */
     --open: block;
     --close: none;
+    --flex: flex;
 
     /* FUNCTIONALITIES (obvious ones) */
     --primary-color-main: hsl(26, 100%, 55%);
@@ -24,13 +25,17 @@
     --max-width-text: 45ch;
 
     /* For Hamburger Menu */
-    --bar-height: 6px;
+    --bar-height: 4px;
     --bar-width: 30px;
     --animation-timing: 250ms ease-in-out;
-    --hambuger-gap: .2rem;
+    /* --hambuger-gap: .rem; */
 
     /* the animation of the hamburger menu, and the height of the toggles */
-    --hamburger-height: calc(var(--bar-height) * 3 + var(--hambuger-gap) * 2)
+    --hamburger-height: calc(var(--bar-height) * 3 + var(--hambuger-gap) * 2);
+    /* Border for image carousel indicator picture */
+    --img-indicator-border: 2px solid var(--primary-color-main);
+    --img-indicator-opacity: .5;
+
 }
 
 *,
@@ -48,7 +53,8 @@ html {
 body {
     background: var(--white);
     margin: 0;
-    padding: 0;
+    /* padding: 0; */
+    height: 110vh;
 }
 
 /* MAIN STYLES START FROM HERE. */
@@ -59,42 +65,44 @@ main {
     align-items: center;
     justify-content: center;
     position: relative;
-    /* width: 100%; */
-    /* max-width: 100%; */
+    width: 100%;
+    /* min-height: 100%; */
 }
 
 /* the header section */
 header {
-    display: grid;
-    /* justify-content: space-between; */
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    justify-content: space-between;
+    /* grid-template-columns: repeat(2, 1fr); */
     /* gap: 3rem; */
     border-bottom: 1px solid var(--text-clr);
-    padding: 30px 20px;
+    padding: 2rem;
     /* padding-bottom: 20px; */
     margin-bottom: 70px;
+    width: 100%;
 }
 
 /* THE NAV-BAR BUTTON. */
-.nav-bar {
-    background: none;
-    border: none;
-}
-
-.nav-bar img {
-    cursor: pointer;
-}
 
 /* THE NAVIGATION SECTION. */
 .navigation-menu-logo {
     display: flex;
     align-items: center;
     gap: 1rem;
+    justify-content: space-between;
+    width: inherit;
     /* use grid for complex designs. */
 }
 
+.logo-nav-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 2rem;
+}
+
 /* change the display of the picture, so it won't take blcok space. */
-.logo-section img {
+.logo-nav-section img {
     display: inline;
 }
 
@@ -122,13 +130,14 @@ header {
     flex-direction: row;
 }
 
-.nav-items>.nav-links {
+.nav-item>.nav-link {
     text-decoration: none;
     color: var(--link-clr);
     line-height: 2.0;
 }
 
-.nav-links:hover {
+/* PUT AN AFTER EFFECT FOR THE HOVER UNDERLINE */
+.nav-link:hover {
     text-decoration: 5px underline var(--primary-color-main);
 
 }
@@ -159,9 +168,11 @@ header {
 }
 
 .accounts img:last-child {
+    --transition-user-picture: .1s ease-in-out;
     height: 40px;
     width: 40px;
     cursor: pointer;
+    transition: border var(--transition-user-picture);
 }
 
 .accounts img:last-child:hover {
@@ -169,15 +180,24 @@ header {
     border-radius: 20px;
 }
 
+.cart-button {
+    border: 0;
+    background: none;
+    position: relative;
+}
+
 /* THE INDICATOR ON THE CART FOR THE NUMBER OF ITEMS ADDED. */
 .items-count {
     position: absolute;
-    left: 26.5rem;
-    top: 1.5rem;
+    top: -0.5rem;
+    right: -0.3rem;
     /* display: block; */
     background-color: var(--primary-color-main);
-    border-radius: 50%;
-    padding: .4rem .6rem;
+    color: white;
+    font-weight: 600;
+    border-radius: 45%;
+    font-size: smaller;
+    padding: .2rem .4rem;
 }
 
 /* THE SECTION FOR ALL THE MAIN CONTENTS IN THE BODY. */
@@ -209,7 +229,7 @@ section.main-section-forall {
     /* transition: 1s ease-in-out; */
     /* transform-origin: top; */
     box-shadow: 2px 5px 7px rgba(0, 0, 0, 0.3);
-    z-index: 1;
+    z-index: 9;
     /* visibility: hidden; */
     /* opacity: 0; */
     overflow-y: hidden;
@@ -217,7 +237,9 @@ section.main-section-forall {
     min-width: 350px;
     display: none;
     margin: 0;
-    padding: 1.5rem 0;
+    padding: 2rem 1.2rem;
+    flex-direction: column;
+    gap: 1.2rem;
     /* backdrop-filter: blur(5px); */
 }
 
@@ -226,14 +248,23 @@ section.main-section-forall {
     filter: blur(5px);
 } */
 
+/* FOR THE OPENING AND THE CLOSING OF THE CART */
+.display-flex {
+    display: var(--flex);
+}
+
+.line-through {
+    border-bottom: 1px solid var(--text-clr);
+}
+
 .basket-title {
     text-transform: uppercase;
     padding-bottom: 20px;
-    margin: 20px 0;
     padding: 1rem;
-    border-bottom: 1px solid var(--text-clr);
     display: flex;
     justify-content: space-between;
+    margin: 0;
+    padding: 0;
 }
 
 .basket-title p {
@@ -255,10 +286,22 @@ section.main-section-forall {
     max-width: 60ch;
 }
 
+/* style for the color of the checkout price */
+.normal {
+    color: var(--greyed-out);
+}
+
+.bold {
+    font-weight: 600;
+}
+
+/* --------- closed ---------- */
+
 .checkout-report {
     display: flex;
     justify-content: center;
     gap: .6rem;
+    flex-direction: column;
     /* align-items: flex-start; */
 }
 
@@ -269,7 +312,6 @@ section.main-section-forall {
 
 span.calculation {
     color: var(--link-text-clr);
-    font-weight: 600;
     color: black;
 }
 
@@ -309,12 +351,7 @@ span.calculation {
 
 /* everything for the carousel (the main container). */
 /* carousel alone (not dialog) */
-.carousel {
-    position: relative;
-}
-
 .carousel-slider {
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -330,41 +367,38 @@ ul {
 .slide {
     overflow: hidden;
     border-radius: 1rem;
-    position: absolute;
-    right: -30px;
-    top: -200px;
-    opacity: 0;
+    /* position: absolute; */
+    right: 0;
+    top: 0;
+    display: none;
     transition: 250ms opacity ease-in-out;
     /* Transition delayed before next image shows */
     transition-delay: 250ms;
     cursor: pointer;
+    opacity: 0;
 }
 
 .slide[data-active] {
-    opacity: 1;
+    display: block;
     /* go into the new one immediately, while the new one waits. */
     transition-delay: 0;
+    opacity: 1;
 }
 
 .carousel-img {
     display: block;
     object-fit: cover;
-    width: 400px;
     height: 400px;
 }
 
 .carousel-indicator {
-    position: absolute;
     gap: 1rem;
     z-index: 1;
-    top: 200px;
-    right: -20px;
     margin-top: 1rem;
 }
 
 .image-container {
     display: flex;
-    justify-content: space-between;
     width: 100%;
     flex-direction: row;
     gap: 1rem;
@@ -375,7 +409,7 @@ ul {
 
 /* THE LI OF THE INDICATOR PICTURES. */
 .indicator-pic {
-    border-radius: .5rem;
+    border-radius: .7rem;
     overflow: hidden;
 }
 
@@ -388,21 +422,52 @@ ul {
     height: 70px;
     width: 70px;
     object-fit: cover;
+    overflow: hidden;
 }
 
 button[data-buttons] {
+    display: none;
     position: absolute;
     top: 50%;
     z-index: 1;
-    transform: translateY(-50%);
+    transform: translateY(350%);
+    border: 0;
+    background: var(--white);
+    padding: .8rem 1rem;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
-.left_picture_button {
+.prev-button {
     left: 1rem;
 }
 
-.right_picture_button {
-    right: -1rem;
+.next-button {
+    right: 1rem;
+}
+
+button[data-buttons] img {
+    object-fit: cover;
+}
+
+/* WHEN WE CLICK ON OUR INDICATORS. */
+.image-border {
+    border: var(--img-indicator-border);
+}
+
+.img-opacity {
+    opacity: var(--img-indicator-opacity);
+}
+
+/*  FOR THE LIGHTBOX DIALOG. */
+.overlay-lightbox {
+    --background-overlay: rgba(0, 0, 0, 0.676);
+    position: fixed;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--background-overlay);
+    z-index: 2;
 }
 
 /* === END OF CAROUSEL === */
@@ -539,84 +604,37 @@ button[data-buttons] {
     bottom: 2px;
 }
 
+
 /* MODALS WOULD COME INTO PLAY, FOR FUNCTIONALITY. */
 
 /* RESPONSIVE CSS */
 @media (max-width: 768px) {
+    /* GENERAL STYLING (adjustment for mobile/tablet view) */
 
-    section.main-section-forall {
-        flex-direction: column;
-    }
 
-    /* COMING INTO THE NAVIGATION BAR. */
-    /* THE HEADER SECTION */
-    /* header {
+    /* THE HEADER (NAV) SECTION*/
+    header {
         border-bottom: none;
         margin-bottom: 0;
-        padding: 10px 10px;
-        justify-content: space-around;
-        gap: 5rem;
-        z-index: 1;
-    } */
-
-    /* REARRANGING THE HEADER ELEMENTS, USING GRID. */
-    .navigation-menu-logo {
-        position: relative;
-        height: 100%;
     }
 
-    /* The Toggle Menu */
+    .navigation-menu-logo {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .logo-nav-section {
+        display: contents;
+    }
+
+    /* THE NAVIGATION MENU (Menu Bar collapsed to be open) */
     .toggle {
         display: block;
-        cursor: pointer;
     }
 
-    .nav-list {
-        /* display: none; */
-        /* flex-direction: column; */
-        /* to make it occupy the full background. */
-        /* margin: 10px; */
-        padding: 70px 40px;
-        position: relative;
-        top: 10px;
-        /* position: relative; */
-        /* z-index: 1; */
-    }
-
-    .nav-links {
-        font-weight: 600;
-        /* margin-bottom: 20px; */
-    }
-
-    .nav-container {
-        background: white;
-        position: fixed;
-        top: 0%;
-        bottom: 100%;
-        right: 50%;
-        height: 100vh;
-        width: 50vw;
-        visibility: hidden;
-        /* box-shadow: 0 0 3px rgba(0, 0, 2, .3); */
-        /* z-index: 1; */
-        /* visibility: visible; */
-        /* display: none; */
-    }
-
-    /* my created close-button element. */
-    .close-button {
-        display: block;
-        position: relative;
-        left: 15%;
-        top: -43%;
-        bottom: 100;
-        cursor: pointer;
-        /* margin-bottom: 70px; */
-    }
-
-    .nav-container::backdrop {
-        opacity: .2;
-        color: red;
+    /* TO MAKE SURE WE POSITION NAV-BAR AT THE LEFT AREA */
+    .navigation-contents {
+        order: -1;
     }
 
     .hamburger-menu {
@@ -625,11 +643,14 @@ button[data-buttons] {
         display: flex;
         flex-direction: column;
         gap: var(--hambuger-gap);
+        transform-origin: center;
         cursor: pointer;
         outline: none;
-        z-index: 2;
+        z-index: 16;
+        /* Let it be higher than the list of links*/
         position: relative;
         outline: none;
+        gap: .3rem;
     }
 
     /* THE CHECKBOX TOGGLE */
@@ -691,9 +712,16 @@ button[data-buttons] {
     }
 
     .hamburger-menu:has(.toggle:checked, .toggle::before, .toggle::after)+.nav-container {
-        visibility: visible;
-        transition: .2s var(--background);
+        display: block;
+        transition: .2s var(--background), position .2s ease-in-out;
+        filter: drop-shadow(2);
         transform-origin: left;
+    }
+
+    .hamburger-menu:has(.toggle:checked, .toggle::before, .toggle::after) {
+        position: fixed;
+        top: 2.4rem;
+        gap: 0;
     }
 
     .hamburger-menu:has(.toggle:checked, .toggle::before, .toggle::after)+.nav-container .nav-list {
@@ -701,27 +729,78 @@ button[data-buttons] {
         flex-direction: column;
     }
 
-    /* FOR THE NAV BAR TO OPEN. */
-    /* .nav-bar-toggle~.nav-list {
-        display: block;
+    /* THE NAVIGATION LIST AND ITEMS */
+    .nav-container {
+        width: 50%;
+        height: 100%;
+        background: var(--secondary-color-bg);
+        position: fixed;
+        display: none;
+        top: 0;
+        padding: 2rem 1rem;
+        /* left: 50%; */
+        right: 50%;
+        z-index: 15;
+    }
+
+    .nav-list {
+        margin-top: 3em;
         flex-direction: column;
-    } */
+        text-align: left;
+    }
+
+    .nav-link {
+        font-weight: 600;
+    }
+
+    /* THE CART (when we open it, position) */
+    .cart-basket {
+        top: 45%;
+        left: 50%;
+    }
+
+    /* THE HERO/BODY SECTION */
 
     /* THE CAROUSEL SECTION. */
-    .carousel-lightbox {
-        /* overflow: hidden; */
+    .carousel {
+        margin: 0;
+        width: 100%;
+        height: 300px;
     }
 
-    .carousel-lightbox .image-container {
-        border-radius: none;
-        /* width: 100vw; */
+    .carousel-slider {
+        display: block;
+        position: relative;
     }
 
-    .image-container img {}
+    .slide {
+        position: absolute;
+        overflow: visible;
+        border-radius: 0;
+        cursor: initial;
+        /* top: 6rem; */
+        /* right: 3rem; */
+    }
+
+    .carousel-img {
+        width: 100%;
+    }
+
+    /* Hide the carousel indicators (not needed for mobile display */
+    .carousel-indicator {
+        display: none;
+    }
+
+    button[data-buttons] {
+        display: block;
+        /* top: 50%; */
+        /* translate: 50%, 50%; */
+    }
 
     /* THE SECTION FOR ALL THE MAIN CONTENTS IN THE BODY. */
     section.main-section-forall {
         flex-direction: column;
+        margin: 0;
     }
 
     /* MAIN SECTION, price-tag section. */
@@ -738,5 +817,4 @@ button[data-buttons] {
     .btn-incre-decrementor {
         justify-content: space-between;
     }
-
 }

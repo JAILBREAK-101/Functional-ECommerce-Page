@@ -21,35 +21,44 @@
                 <!-- THE NAVIGATION MENU-HAMBURGER -->
                 <!-- <div class="hamburger-menu"></div> -->
                 <!-- the logo -->
-                <div class="logo-section">
-                    <img src="./images/logo.svg" alt="IMAGE LOGO.">
+                <div class="logo-nav-section">
+                    <div class="logo">
+                        <img src="./images/logo.svg" alt="IMAGE LOGO.">
+                    </div>
+
+                    <!-- THE NAVIGATION MENU -->
+                    <!-- <button for="nav-bar-toggle" class="nav-bar toggle"> -->
+                    <!-- <img src="./images/icon-menu.svg" alt="" class="toggle"> -->
+                    <!-- </button> -->
+                    <!-- <input class="toggle_on" id="nav-bar-toggle" type="checkbox"> -->
+                    <div class="navigation-contents">
+
+                        <label for="toggle" class="hamburger-menu">
+                            <input type="checkbox" name="toggle" id="toggle" class="toggle">
+                        </label>
+                        <div class="nav-container" id="navigation-container">
+                            <ul class="nav-list">
+                                <li class="nav-item"><a href="" class="nav-link">Collections</a></li>
+                                <li class="nav-item"><a href="" class="nav-link">Men</a></li>
+                                <li class="nav-item"><a href="" class="nav-link">Woman</a></li>
+                                <li class="nav-item"><a href="" class="nav-link">About</a></li>
+                                <li class="nav-item"><a href="" class="nav-link">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- THE NAVIGATION MENU -->
-                <!-- <button for="nav-bar-toggle" class="nav-bar toggle"> -->
-                <!-- <img src="./images/icon-menu.svg" alt="" class="toggle"> -->
-                <!-- </button> -->
-                <!-- <input class="toggle_on" id="nav-bar-toggle" type="checkbox"> -->
-                <label for="" class="hamburger-menu"></label>
-                <div class="nav-container" id="navigation-container">
-                    <ul class="nav-list">
-                        <li class="nav-items"><a href="" class="nav-links">Collections</a></li>
-                        <li class="nav-items"><a href="" class="nav-links">Men</a></li>
-                        <li class="nav-items"><a href="" class="nav-links">Woman</a></li>
-                        <li class="nav-items"><a href="" class="nav-links">About</a></li>
-                        <li class="nav-items"><a href="" class="nav-links">Contact</a></li>
-                    </ul>
+                <!--  the other functionality (cart and account.)-->
+                <div class="accounts">
+                    <!-- <button class="cart-btn open_modal_button"> -->
+                    <button class="cart-button">
+                        <img class="cart-btn open_modal_button" src="./images/icon-cart.svg" alt="The cart image">
+                        <span class="items-count">0</span>
+                    </button>
+                    <!-- </button> -->
+                    <img src="./images/image-avatar.png" alt="The User account's image.">
                 </div>
             </nav>
-
-            <!--  the other functionality (cart and account.)-->
-            <div class="accounts">
-                <!-- <button class="cart-btn open_modal_button"> -->
-                <span class="items-count">0</span>
-                <img class="cart-btn open_modal_button" src="./images/icon-cart.svg" alt="The cart image">
-                <!-- </button> -->
-                <img src="./images/image-avatar.png" alt="The User account's image.">
-            </div>
         </header>
         <hr>
         <!-- RULE FOR THE HEADER. -->
@@ -62,11 +71,14 @@
                     <img src="./images/icon-close.svg" alt="close button">
                 </button>
             </section>
+
+            <div class="line-through"></div>
+
             <section class="basket-field show-report">
-                <span class="empty-indicator">
+                <span class="empty-ind open">
                     Your cart is empty.
                 </span>
-                <section class="checkout-report">
+                <section class="checkout-report close">
                     <!-- any amount user increments to. -->
                     <!-- inside the cart (product details, plus the number of products.) -->
                     <!-- for the empty indicator -->
@@ -77,7 +89,7 @@
                             Autumn Limited Edition Sneakers
                         </p>
                         <section class="product-amount">
-                            <span class="calculation"></span>
+                            <span class="calculation"> </span> <span id="price"></span>
                         </section>
                     </section>
                     <img class="delete-button" src="./images/icon-delete.svg" alt="delete button">
@@ -101,44 +113,46 @@
                     <button class="next-button" data-buttons><img src="./images/icon-next.svg"
                             class="right_picture_button" alt="Right btn icon"></button>
                     <!-- buttons come here inside carousel-track -->
-                    <ul>
+                    <ul data-slides>
                         <li class="slide" data-active>
-                            <img class="carousel-img" src="./images/image-product-1.jpg" alt="first picture">
+                            <img class="carousel-img" src="./images/image-product-1.jpg" alt="first thumbnail">
+                        </li>
+
+                        <li class="slide">
+                            <img class="carousel-img" src="./images/image-product-2.jpg" alt="second thumbnail">
+                        </li>
+
+                        <li class="slide">
+                            <img class="carousel-img" src="./images/image-product-3.jpg" alt="third thumbnail">
+                        </li>
+
+                        <li class="slide">
+                            <img class="carousel-img" src="./images/image-product-4.jpg" alt="fourth thumbnail">
                         </li>
                     </ul>
 
-                    <li class="slide">
-                        <img class="carousel-img" src="./images/image-product-2.jpg" alt="second picture">
-                    </li>
-
-                    <li class="slide">
-                        <img class="carousel-img" src="./images/image-product-3.jpg" alt="third picture">
-                    </li>
-
-                    <li class="slide">
-                        <img class="carousel-img" src="./images/image-product-4.jpg" alt="fourth picture">
-                    </li>
-
                     <!-- second button here. -->
+                    <section class="carousel-indicator">
+                        <!-- images come here. -->
+                        <ul class="image-container" data-indicator>
+                            <li class="indicator-pic"><img class="indicator-picture"
+                                    src="./images/image-product-1-thumbnail.jpg" alt="first thumbnail"></li>
+                            <li class="indicator-pic"><img class="indicator-picture"
+                                    src="./images/image-product-2-thumbnail.jpg" alt="second thumbnail"></li>
+                            <li class="indicator-pic"><img class="indicator-picture"
+                                    src="./images/image-product-3-thumbnail.jpg" alt="third thumbnail"></li>
+                            <li class="indicator-pic"><img class="indicator-picture"
+                                    src="./images/image-product-4-thumbnail.jpg" alt="fourth thumbnail"></li>
+                        </ul>
+                    </section>
                 </section>
 
                 <!-- image indicator, for where we are in carousel comes here. -->
-                <section class="carousel-indicator">
-                    <!-- images come here. -->
-                    <ul class="image-container">
-                        <li class="indicator-pic"><img class="indicator-picture"
-                                src="./images/image-product-1-thumbnail.jpg" alt="first thumbnail"></li>
-                        <li class="indicator-pic"><img class="indicator-picture"
-                                src="./images/image-product-2-thumbnail.jpg" alt=""></li>
-                        <li class="indicator-pic"><img class="indicator-picture"
-                                src="./images/image-product-3-thumbnail.jpg" alt=""></li>
-                        <li class="indicator-pic"><img class="indicator-picture"
-                                src="./images/image-product-4-thumbnail.jpg" alt=""></li>
-                    </ul>
-                </section>
             </section>
 
-
+            <section class="">
+                <!-- Here is the light -->
+            </section>
 
             <!-- the second section in body -->
             <section class="details">
