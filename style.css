@@ -378,7 +378,7 @@ ul {
     opacity: 0;
 }
 
-.slide[data-active] {
+.active {
     display: block;
     /* go into the new one immediately, while the new one waits. */
     transition-delay: 0;
